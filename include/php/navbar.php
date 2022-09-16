@@ -85,7 +85,7 @@ $count_form = $model->getRows($tblName, $conditions);
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admission Portal</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/firsthonourschlogo.png">
     <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
     <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">

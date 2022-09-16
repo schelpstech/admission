@@ -11,7 +11,7 @@ include '../../controller/start.inc.php';
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admission Portal </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/firsthonourschlogo.png">
 	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
