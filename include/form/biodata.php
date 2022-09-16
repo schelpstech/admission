@@ -1,6 +1,11 @@
 
  <div class="row">
-
+ <script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
  <div class="col-xl-8 col-lg-12 offset-2">
      <div class="card">
          <div class="card-header">
