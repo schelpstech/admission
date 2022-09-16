@@ -6,6 +6,7 @@
 </script>
 <?php
 include '../../include/php/navbar.php';
+
 if (isset($_GET['form_biodata'])) {
     $form_number = $_GET['form_biodata'];
     $form = 'Applicant Bio-data Form';
@@ -18,9 +19,11 @@ if (isset($_GET['form_biodata'])) {
         )
     );
     $form_view = $model->getRows($tblName, $conditions);
-    
+
     $include = "../../include/form/biodata.php";
 }
+
+
 if (isset($_GET['form_academic'])) {
     $form_number = $_GET['form_academic'];
     $form = 'Applicant Academic Form';
@@ -34,9 +37,6 @@ if (isset($_GET['form_academic'])) {
         )
     );
     $form_view = $model->getRows($tblName, $conditions);
-    //Select Available State of Origin
-    $tblName = 'location';
-    $location = $model->getRows($tblName);
     $include = "../../include/form/academic.php";
 }
 if (isset($_GET['form_contact'])) {
@@ -56,6 +56,7 @@ if (isset($_GET['form_contact'])) {
     $form_view = $model->getRows($tblName, $conditions);
     $include = "../../include/form/contact.php";
 }
+
 if (isset($_GET['form_health'])) {
     $form_number = $_GET['form_health'];
     $form = 'Applicant Health History Form';
@@ -71,11 +72,9 @@ if (isset($_GET['form_health'])) {
         )
     );
     $form_view = $model->getRows($tblName, $conditions);
-    //Select Available State of Origin
-    $tblName = 'location';
-    $location = $model->getRows($tblName);
     $include = "../../include/form/health.php";
 }
+
 if (isset($_GET['form_attest'])) {
     $form_number = $_GET['form_attest'];
     $form = 'Applicant Attestation Form';
@@ -91,9 +90,6 @@ if (isset($_GET['form_attest'])) {
         )
     );
     $form_view = $model->getRows($tblName, $conditions);
-    //Select Available State of Origin
-    $tblName = 'location';
-    $location = $model->getRows($tblName);
     $include = "../../include/form/attestation.php";
 }
 

@@ -71,7 +71,6 @@ $conditions = array(
     'return_type' => 'count',
     'where' => array(
         'parent_ref' =>  $parent_ref,
-        'parent_ref' =>  $parent_ref,
     )
 );
 $count_form = $model->getRows($tblName, $conditions);
