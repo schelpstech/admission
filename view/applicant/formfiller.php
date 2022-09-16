@@ -18,13 +18,7 @@ if (isset($_GET['form_biodata'])) {
         )
     );
     $form_view = $model->getRows($tblName, $conditions);
-    //Select Available State of Origin
-    $tblName = 'location';
-    $conditions = array(
-        'select' => 'DISTINCT state',
-        'order_by' => 'state ASC5',
-    );
-    $location = $model->getRows($tblName,  $conditions);
+    
     $include = "../../include/form/biodata.php";
 }
 if (isset($_GET['form_academic'])) {

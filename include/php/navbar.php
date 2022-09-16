@@ -14,9 +14,16 @@ $conditions = array(
     )
 );
 $parent = $model->getRows($tblName, $conditions);
-//Select Available State of Origin
+
+
 $tblName = 'location';
-$location = $model->getRows($tblName);
+$conditions = array(
+    'select' => 'DISTINCT state',
+    'order_by' => 'state ASC',
+);
+$location = $model->getRows($tblName,  $conditions);
+
+
 $tblName = 'application_tbl';
 $conditions = array(
     'join' => 'tbl_users on application_tbl.parent_ref = tbl_users.user_phone',
