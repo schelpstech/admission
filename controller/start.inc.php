@@ -4,8 +4,8 @@
 session_start();
 
 // Include necessary file
-include_once 'User.class.php';
-include_once 'Model.class.php';
+include_once 'user.class.php';
+include_once 'model.class.php';
 
 // database access parameters
 $db_host = 'localhost';
