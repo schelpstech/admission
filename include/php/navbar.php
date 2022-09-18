@@ -91,6 +91,29 @@ $count_form = $model->getRows($tblName, $conditions);
     <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="js/form.js"></script>
+    <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js"> </script>
+    <script type="text/javascript">
+        function PrintElem(elem) {
+            Popup($(elem).html());
+        }
+
+        function Popup(data) {
+            var myWindow = window.open('', 'Payment Receipt', 'height=400,width=600');
+            myWindow.document.write('<html><head><title>Payment Receipt</title>');
+            myWindow.document.write('<link href="css/style.css" rel="stylesheet">');
+            myWindow.document.write('</head><body >');
+            myWindow.document.write(data);
+            myWindow.document.write('</body></html>');
+            myWindow.document.close(); // necessary for IE >= 10
+
+            myWindow.onload=function(){ // necessary if the div contain images
+
+                myWindow.focus(); // necessary for IE >= 10
+                myWindow.print();
+                myWindow.close();
+            };
+        }
+    </script>
 </head>
 
 <body>
@@ -113,7 +136,6 @@ $count_form = $model->getRows($tblName, $conditions);
         Main wrapper start
     ***********************************-->
     <div id="main-wrapper">
-
         <!--**********************************
             Nav header start
         ***********************************-->
@@ -121,9 +143,8 @@ $count_form = $model->getRows($tblName, $conditions);
             <a href="index-2.html" class="brand-logo">
                 <img src="images/firsthonourschlogo.png" alt="">
             </a>
-
             <div class="nav-control">
-                <div class="hamburger">
+                <div class="hamburger" id="navhide">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </div>
             </div>

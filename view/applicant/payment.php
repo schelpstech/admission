@@ -118,7 +118,7 @@ include '../../include/php/navbar.php';
                                                 <td>
                                                     <?php
                                                     if ($view['amount_paid'] != "" && $view['payment_date'] != "" && $view['payment_verified'] == 11 ) {
-                                                        echo '<a href="./formfiller.php?payment=' . $view['form_number'] . '" data-placement="top" title="Generate Receipt"><span class="badge light badge-success"> Generate Receipt </span></a>';
+                                                        echo '<a href="./reportviewer.php?payment=' . $view['form_number'] . '" data-placement="top" title="Generate Receipt"><span class="badge light badge-success"> Generate Receipt </span></a>';
                                                     } elseif ($view['amount_paid'] != "" && $view['payment_date'] != "" && $view['payment_verified'] == 00 ) {
                                                         echo '<a href="./formfiller.php?payment=' . $view['form_number'] . '" data-placement="top" title="Pending Verification"><span class="badge light badge-primary"> Pending Verification! Modify </span></a>';
                                                     } else {

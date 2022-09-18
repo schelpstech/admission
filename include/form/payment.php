@@ -72,7 +72,7 @@
                                 <input type="file" class="form-control" name="payment_receipt">
                             </div>
                             <iframe <?php if (!empty($form_view['payment_mode'])) {
-                                        echo 'src="../../storage/payment/' . $form_view['payment_receipt'].'" title="Payment Receipt" height="300" width="600"';
+                                        echo 'src="../../storage/payment/' . $form_view['payment_receipt'] . '" title="Payment Receipt" height="300" width="600"';
                                     } else {
                                         echo 'src="../../storage/payment/noresult.png" title="Payment Receipt" height="300" width="300"';
                                     }

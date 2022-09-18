@@ -100,27 +100,27 @@ include '../../include/php/navbar.php';
                                             <td>
                                                 <?php
                                                     if( $view['payment_verified'] == 11 && $view['exam_date'] != ''  ){
-                                                        echo'<a href="./formfiller.php?form_examschedule='.$view['form_number'].'" data-placement="top" title="Schedule Entrance Exam"><span class="badge light badge-primary">'.$view['exam_date'].' </span></a>';
+                                                        echo'<a href="./reportviewer.php?form_examschedule='.$view['form_number'].'" data-placement="top" title="Print Exam Schedule"><span class="badge light badge-primary">'.$view['exam_date'].'<br> Click to Print </span></a>';
                                                     }elseif( $view['payment_verified'] == 11 && $view['exam_date'] == ''  ){
                                                         echo'<a href="./formfiller.php?form_examschedule='.$view['form_number'].'"  data-placement="top" title="Schedule Entrance Exam"><span class="badge light badge-success"> Click to Schedule Entrance Exam </span></a>';
                                                     }else{
-                                                        echo'<a href="./formfiller.php?payment='.$view['form_number'].'"  data-placement="top" title="Schedule Entrance Exam"><span class="badge light badge-danger"> Form Payment Not Found</span></a>';
+                                                        echo'<a href="./formfiller.php?payment='.$view['form_number'].'"  data-placement="top" title="Schedule Entrance Exam"><span class="badge light badge-danger"> Form Payment Pending</span></a>';
                                                     }
                                                 ?>
                                             </td>
                                             <td>
                                                 <?php
                                                     if($view['exam_score'] != ""){
-                                                        echo'<a href="./report.php?form_academic='.$view['form_number'].'"  data-placement="top" title="Entrance Exam Score"><span class="badge light badge-success"> Print Result </span></a>';
+                                                        echo'<a href="./reportviewer.php?form_score='.$view['form_number'].'"  data-placement="top" title="Print Entrance Exam Score"><span class="badge light badge-success"> Print Result Slip</span></a>';
                                                     }else{
-                                                        echo'<a href="#"  data-placement="top" title="Entrance Exam Score"><span class="badge light badge-warning"> Exam not Yet Taken </span></a>';
+                                                        echo'<a href="#"  data-placement="top" title="Entrance Exam Score"><span class="badge light badge-warning"> Pending </span></a>';
                                                     }
                                                 ?>
                                             </td>
                                             <td>
                                                 <?php
                                                     if($view['admission_status'] != ""){
-                                                        echo'<a href="./report.php?form_academic='.$view['form_number'].'"  data-placement="top" title="Admission Status"><span class="badge light badge-success"> Print Admission Status </span></a>';
+                                                        echo'<a href="./reportviewer.php?form_status='.$view['form_number'].'"  data-placement="top" title="Check Admission Status"><span class="badge light badge-success"> Print Admission Decision </span></a>';
                                                     }else{
                                                         echo'<a href="#"  data-placement="top" title="Admission Status"><span class="badge light badge-warning"> Pending </span></a>';
                                                     }
