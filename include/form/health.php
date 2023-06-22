@@ -32,8 +32,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_1" name="illness[]" value="TYPHOID , " 
                                 <?php 
+                                    if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "TYPHOID")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_1">TYPHOID</label>
                             </div>
@@ -42,8 +43,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_2" name="illness[]" value="POX , "
                                 <?php 
+                                    if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "POX")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_2">CHICKEN POX</label>
                             </div>
@@ -52,8 +54,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_3" name="illness[]" value="COUGH , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "COUGH")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_3">WHOOPING COUGH</label>
                             </div>
@@ -62,8 +65,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_4" name="illness[]" value="RUBELLA , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "RUBELLA")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_4">RUBELLA</label>
                             </div>
@@ -72,8 +76,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_5" name="illness[]" value="MEASLES , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "MEASLES")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_5">MEASLES</label>
                             </div>
@@ -82,8 +87,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_6" name="illness[]" value="RESPIRATORY , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "RESPIRATORY")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_6">RESPIRATORY INFECTION</label>
                             </div>
@@ -92,8 +98,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_7" name="illness[]" value="EARING , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "EARING")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_7">EARING DISABILITY</label>
                             </div>
@@ -102,8 +109,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_8" name="illness[]" value="EYE , "
                                 <?php 
+                                if(!empty($form_view['health_illness'])){
                                     if(str_contains($form_view['health_illness'], "EYE")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_8">EYE PROBLEM</label>
                             </div>
