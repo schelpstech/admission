@@ -85,6 +85,7 @@ include '../../include/php/navbar.php';
                                 </thead>
                                 <tbody>
                                     <?php
+                                    if(!empty($form_list)){
                                     foreach ($form_list as $view) {
                                         $tbl = 'lhpclass';
                                         $conditions = array(
@@ -147,6 +148,9 @@ include '../../include/php/navbar.php';
 
                                         </tr>
                                     <?php
+                                    }
+                                    } else{
+                                        echo '<tr>No Form</tr>';
                                     }
                                     ?>
                                 </tbody>
