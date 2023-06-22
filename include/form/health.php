@@ -122,8 +122,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_9" name="vaccine[]" value="Polio , "
                                 <?php 
+                                if(!empty($form_view['health_vaccine'])){
                                     if(str_contains($form_view['health_vaccine'], "Polio")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_9">Polio Vaccine</label>
                             </div>
@@ -132,8 +133,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_10" name="vaccine[]" value="Pox , "
                                 <?php 
+                                if(!empty($form_view['health_vaccine'])){
                                     if(str_contains($form_view['health_vaccine'], "Pox")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_10">Small Pox</label>
                             </div>
@@ -142,8 +144,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_11" name="vaccine[]" value="BCG , "
                                 <?php 
+                                if(!empty($form_view['health_vaccine'])){
                                     if(str_contains($form_view['health_vaccine'], "BCG")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_11">BCG</label>
                             </div>
@@ -152,8 +155,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_12" name="vaccine[]" value="Tetanus , "
                                 <?php 
+                                if(!empty($form_view['health_vaccine'])){
                                     if(str_contains($form_view['health_vaccine'], "Tetanus")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_12">Tetanus</label>
                             </div>
@@ -162,8 +166,9 @@
                             <div class="custom-control custom-checkbox ml-1">
                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_13" name="vaccine[]" value="Measles , "
                                 <?php 
+                                if(!empty($form_view['health_vaccine'])){
                                     if(str_contains($form_view['health_vaccine'], "Measles")){
-                                    echo 'checked';}
+                                    echo 'checked';}}
                                  ?>>
                                 <label class="custom-control-label" for="basic_checkbox_13">Measles</label>
                             </div>
