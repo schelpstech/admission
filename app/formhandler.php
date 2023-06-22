@@ -95,7 +95,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     $stateoforigin = trim($_POST['stateoforigin']);
     $dateofbirth = trim($_POST['dateofbirth']);
     $form_number = trim($_POST['form_number']);
-    $passport = ($_POST['passport']);
     $errormsg = '';
     $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
     if (empty($gender)) {
