@@ -11,8 +11,8 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     $firstname = trim($_POST['firstname']);
     $othername = trim($_POST['othername']);
     $pros_class = trim($_POST['pros_class']);
-    $user_ip =  $_SERVER['REMOTE_ADDR'];
-    $token =   'FORM-' . strtoupper($utility->generateRandomString(6));
+    $user_ip = $_SERVER['REMOTE_ADDR'];
+    $token = 'FORM-' . strtoupper($utility->generateRandomString(6));
     $parent_ref = $_SESSION['uniqueid'];
     $errormsg = '';
     // Check for empty and invalid inputs
@@ -38,7 +38,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 'othername' => $othername,
                 'surname' => $surname,
                 'classid' => $pros_class,
-                'parent_ref' =>  $parent_ref,
+                'parent_ref' => $parent_ref,
             )
 
         );
@@ -51,7 +51,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 'othername' => $othername,
                 'surname' => $surname,
                 'classid' => $pros_class,
-                'parent_ref' =>  $parent_ref,
+                'parent_ref' => $parent_ref,
                 'form_number' => $token,
             );
             $insert = $model->insert_data($tblName, $formdata);
@@ -79,7 +79,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
             $_SESSION['msg'] = $response;
         }
     } else {
-        $response =  '
+        $response = '
                 <div class="alert alert-danger alert-dismissible fade show">
 					<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                     <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -107,7 +107,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if (empty($dateofbirth)) {
         $errormsg .= ' Date of Birth is required <br/>';
     }
-    if (isset($_FILES['passport']) && $_FILES['passport']['error'] === UPLOAD_ERR_OK && in_array(exif_imagetype($_FILES['passport']['tmp_name']), $allowedTypes)) {
+    if (isset($_FILES['passport']) && $_FILES['passport']['error'] === UPLOAD_ERR_OK) {
         //passportdata
         $fileTmpPath = $_FILES['passport']['tmp_name'];
         $fileName = $_FILES['passport']['name'];
@@ -129,7 +129,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
                 $tblName = 'application_tbl';
                 $conditions = array(
-                    'form_number' =>  $form_number,
+                    'form_number' => $form_number,
                 );
                 $parameters = array(
                     'passport' => $passport,
@@ -162,7 +162,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                     $_SESSION['msg'] = $response;
                 }
             } else {
-                $response =  '
+                $response = '
                 <div class="alert alert-danger alert-dismissible fade show">
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                     <strong>Ooops!</strong>  There has been a glitch on the server. Kindly try at a later time.
@@ -174,7 +174,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -190,7 +190,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
             $tblName = 'application_tbl';
             $conditions = array(
-                'form_number' =>  $form_number,
+                'form_number' => $form_number,
             );
             $parameters = array(
                 'gender' => $gender,
@@ -222,7 +222,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -250,7 +250,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if (empty($last_year)) {
         $errormsg .= ' Year last class was completed is required <br/>';
     }
-    if (isset($_FILES['last_result']) && $_FILES['last_result']['error'] === UPLOAD_ERR_OK && in_array(exif_imagetype($_FILES['last_result']['tmp_name']), $allowedTypes)) {
+    if (isset($_FILES['last_result']) && $_FILES['last_result']['error'] === UPLOAD_ERR_OK ) {
         //passportdata
         $fileTmpPath = $_FILES['last_result']['tmp_name'];
         $fileName = $_FILES['last_result']['name'];
@@ -272,7 +272,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
                 $tblName = 'application_tbl';
                 $conditions = array(
-                    'form_number' =>  $form_number,
+                    'form_number' => $form_number,
                 );
                 $parameters = array(
                     'last_result' => $last_result,
@@ -305,7 +305,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                     $_SESSION['msg'] = $response;
                 }
             } else {
-                $response =  '
+                $response = '
                 <div class="alert alert-danger alert-dismissible fade show">
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                     <strong>Ooops!</strong>  There has been a glitch on the server. Kindly try at a later time.
@@ -317,7 +317,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -333,7 +333,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
             $tblName = 'application_tbl';
             $conditions = array(
-                'form_number' =>  $form_number,
+                'form_number' => $form_number,
             );
             $parameters = array(
                 'last_class' => $last_class,
@@ -365,7 +365,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -410,7 +410,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if ($errormsg == '') {
         $tblName = 'tbl_users';
         $conditions = array(
-            'user_phone' =>  $_SESSION['uniqueid'],
+            'user_phone' => $_SESSION['uniqueid'],
         );
         $parameters = array(
             'phone2' => $phone2,
@@ -446,7 +446,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
             $_SESSION['msg'] = $response;
         }
     } else {
-        $response =  '
+        $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -471,7 +471,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if ($errormsg == '') {
         $tblName = 'application_tbl';
         $conditions = array(
-            'form_number' =>  $form_number,
+            'form_number' => $form_number,
         );
         $parameters = array(
             'health_surgery' => $surgery,
@@ -503,7 +503,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
             $_SESSION['msg'] = $response;
         }
     } else {
-        $response =  '
+        $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -526,7 +526,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if ($errormsg == '') {
         $tblName = 'application_tbl';
         $conditions = array(
-            'form_number' =>  $form_number,
+            'form_number' => $form_number,
         );
         $parameters = array(
             'attestation' => 'Yes',
@@ -556,7 +556,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
             $_SESSION['msg'] = $response;
         }
     } else {
-        $response =  '
+        $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . $parent . '
@@ -583,7 +583,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if (empty($payment_mode)) {
         $errormsg .= ' Payment Mode is required <br/>';
     }
-    if (isset($_FILES['payment_receipt']) && $_FILES['payment_receipt']['error'] === UPLOAD_ERR_OK && in_array(exif_imagetype($_FILES['payment_receipt']['tmp_name']), $allowedTypes)) {
+    if (isset($_FILES['payment_receipt']) && $_FILES['payment_receipt']['error'] === UPLOAD_ERR_OK ) {
         //passportdata
         $fileTmpPath = $_FILES['payment_receipt']['tmp_name'];
         $fileName = $_FILES['payment_receipt']['name'];
@@ -605,7 +605,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
                 $tblName = 'application_tbl';
                 $conditions = array(
-                    'form_number' =>  $form_number,
+                    'form_number' => $form_number,
                 );
                 $parameters = array(
                     'amount_paid' => $amount_paid,
@@ -639,7 +639,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                     $_SESSION['msg'] = $response;
                 }
             } else {
-                $response =  '
+                $response = '
                 <div class="alert alert-danger alert-dismissible fade show">
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                     <strong>Ooops!</strong>  There has been a glitch on the server. Kindly try at a later time.
@@ -651,7 +651,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -667,7 +667,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
 
             $tblName = 'application_tbl';
             $conditions = array(
-                'form_number' =>  $form_number,
+                'form_number' => $form_number,
             );
             $parameters = array(
                 'amount_paid' => $amount_paid,
@@ -699,7 +699,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
                 $_SESSION['msg'] = $response;
             }
         } else {
-            $response =  '
+            $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
@@ -723,7 +723,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     if ($errormsg == '') {
         $tblName = 'application_tbl';
         $conditions = array(
-            'form_number' =>  $form_number,
+            'form_number' => $form_number,
         );
         $parameters = array(
             'exam_date' => $schedule,
@@ -753,7 +753,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
             $_SESSION['msg'] = $response;
         }
     } else {
-        $response =  '
+        $response = '
                     <div class="alert alert-danger alert-dismissible fade show">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                         <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . $parent . '
