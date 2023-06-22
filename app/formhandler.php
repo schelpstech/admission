@@ -458,8 +458,8 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
     }
 } elseif (isset($_POST['action']) && ($_POST['action'] == 'health_data')) {
     $surgery = $_POST['surgery'];
-    $illness = implode($_POST['illness']);
-    $vaccine = implode($_POST['vaccine']);
+    $illness = (!empty($_POST['illness'])) ? implode($_POST['illness']) : "";
+    $vaccine = (!empty($_POST['vaccine'])) ? implode($_POST['vaccine']) : "";
     $form_number = $_POST['form_number'];
     $errormsg = '';
 
