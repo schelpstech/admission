@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <form method="POST" action="#" enctype='multipart/form-data'>
-                            <img src="../../storage/passport/<?php echo $form_view['passport']?>" width="200" />
+                        <img src="../../storage/passport/<?php echo $form_view['passport']?>" width="200" />
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label"><strong>Applicant Fullname:</strong></label>
                             <div class="col-sm-8">

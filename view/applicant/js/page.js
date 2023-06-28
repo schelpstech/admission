@@ -28,6 +28,16 @@ function load_recovery_page() {
     })
 };
 
+function load_admin_page() {
+    $.ajax({
+        url: '../../include/user/admin.php',
+        success: function (data) {
+
+            $("#section").html(data);
+        }
+    })
+};
+
 
 function checkpin() {
     var pina = document.getElementById("password").value;

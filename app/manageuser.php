@@ -279,4 +279,89 @@ if (isset($_POST['register'])) {
         $user->redirect($_SERVER['HTTP_REFERER']);
         $_SESSION['msg'] = $response;
     }
+} elseif (isset($_POST['adminloginform'])) {
+    $username = trim($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $user_ip =  $_SERVER['REMOTE_ADDR'];
+    $token =   $utility->generateRandomString(16);
+    $errormsg = '';
+    // Check for empty and invalid inputs
+    if (empty($username)) {
+        $errormsg .= ' Your username is required <br/>';
+    }
+    if (empty($password)) {
+        $errormsg .= ' Password is required <br/>';
+    }
+    if (empty($errormsg)) {
+        // Check if Phone number Exist in Database
+        $tblName = '123admin';
+        $conditions = array(
+            'return_type' => 'count',
+            'where' => array(
+                'dname' => $username,
+            )
+
+        );
+        $verify = $model->getRows($tblName, $conditions);
+        // Check if username exist
+        if ($verify == 1) {
+            // Hash password
+
+            // Check applicant account
+            $conditions = array(
+                'return_type' => 'single',
+                'where' => array(
+                    'dname' => $username,
+                )
+
+            );
+            $returned_row = $model->getRows($tblName, $conditions);
+            if (($password ===  $returned_row['dpwd']) && ($username == $returned_row['dname'])) {
+                $response = '
+                <div class="alert alert-success alert-dismissible fade show">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+                    <strong>Success!</strong> Welcome ' . $returned_row['dname'] . ' to First Honour Schools Central Admission Portal!   
+                    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+                </div>
+                ';
+                $user->redirect('../view/manager/home.php');
+                $_SESSION['msg'] = $response;
+                $_SESSION['uniqueid'] = $username;
+            } else {
+                $response = '
+                   <div class="alert alert-danger alert-dismissible fade show">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <strong>Error!</strong> Incorrect Login credentials. Try Again!
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
+                    </div>
+                  ';
+                $user->redirect($_SERVER['HTTP_REFERER']);
+                $_SESSION['msg'] = $response;
+            }
+        } else {
+            $response = '
+               <div class="alert alert-danger alert-dismissible fade show">
+					<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+					<strong>Error!</strong> No user account linked to this username
+					<button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+				</div>
+              ';
+            $user->redirect($_SERVER['HTTP_REFERER']);
+            $_SESSION['msg'] = $response;
+        }
+    } else {
+        $response = '
+                <div class="alert alert-danger alert-dismissible fade show">
+					<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    <strong>Ooops!</strong>  We noticed some error in your log in details :  <br/> ' . trim($errormsg) . '
+					<button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+				</div>
+                ';
+        $user->redirect($_SERVER['HTTP_REFERER']);
+        $_SESSION['msg'] = $response;
+    }
 }

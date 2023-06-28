@@ -763,4 +763,116 @@ if (isset($_POST['action']) && ($_POST['action'] == 'application_begin')) {
         $user->redirect($_SERVER['HTTP_REFERER']);
         $_SESSION['msg'] = $response;
     }
+}elseif (isset($_POST['action']) && ($_POST['action'] == 'confirmPayment')){
+    $payment_status = trim($_POST['payment_status']);
+    $form_number = trim($_POST['form_number']);
+    $errormsg = '';
+    
+    if (empty($form_number)) {
+        $errormsg .= ' Form Number is  required <br/>';
+    }
+    if (empty($payment_status)) {
+        $errormsg .= ' Payment Status is required <br/>';
+    }
+    if ($errormsg == '') {
+        $tblName = 'application_tbl';
+        $conditions = array(
+            'form_number' => $form_number,
+        );
+        $parameters = [
+            'payment_verified' => $payment_status,
+        ];
+        $updateform = $model->upDate($tblName, $parameters, $conditions);
+
+        if ($updateform) {
+            $response = '
+                <div class="alert alert-success alert-dismissible fade show">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+                    <strong>Success! </strong>Registration Fee Payment Status for Applicant with Reference number :: ' . $form_number . ' has been successfully updated. 
+                    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+                </div>
+                ';
+            $user->redirect($_SERVER['HTTP_REFERER']);
+            $_SESSION['msg'] = $response;
+        } else {
+            $response = '
+                   <div class="alert alert-danger alert-dismissible fade show">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <strong>Error!</strong> There has been an error updating applicant Registration Fee Payment Status
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
+                    </div>
+                  ';
+            $user->redirect($_SERVER['HTTP_REFERER']);
+            $_SESSION['msg'] = $response;
+        }
+    } else {
+        $response = '
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
+                    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+                </div>
+                ';
+        $user->redirect($_SERVER['HTTP_REFERER']);
+        $_SESSION['msg'] = $response;
+    }
+}elseif (isset($_POST['action']) && ($_POST['action'] == 'updateExamScore')){
+    $examScore = trim($_POST['examScore']);
+    $form_number = trim($_POST['form_number']);
+    $errormsg = '';
+    
+    if (empty($form_number)) {
+        $errormsg .= ' Form Number is  required <br/>';
+    }
+    if (empty($examScore)) {
+        $errormsg .= ' Exam Score is required <br/>';
+    }
+    if ($errormsg == '') {
+        $tblName = 'application_tbl';
+        $conditions = array(
+            'form_number' => $form_number,
+        );
+        $parameters = [
+            'exam_score' => $examScore,
+        ];
+        $updateform = $model->upDate($tblName, $parameters, $conditions);
+
+        if ($updateform) {
+            $response = '
+                <div class="alert alert-success alert-dismissible fade show">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+                    <strong>Success! </strong>Entrance Examination Score for Applicant with Reference number :: ' . $form_number . ' has been successfully updated. 
+                    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+                </div>
+                ';
+            $user->redirect($_SERVER['HTTP_REFERER']);
+            $_SESSION['msg'] = $response;
+        } else {
+            $response = '
+                   <div class="alert alert-danger alert-dismissible fade show">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <strong>Error!</strong> There has been an error updating applicant Entrance Examination Score
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
+                    </div>
+                  ';
+            $user->redirect($_SERVER['HTTP_REFERER']);
+            $_SESSION['msg'] = $response;
+        }
+    } else {
+        $response = '
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    <strong>Ooops!</strong>  We noticed some error in your submission <br/> ' . trim($errormsg) . '
+                    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                    </button>
+                </div>
+                ';
+        $user->redirect($_SERVER['HTTP_REFERER']);
+        $_SESSION['msg'] = $response;
+    }
 }
