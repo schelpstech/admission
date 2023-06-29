@@ -6,12 +6,12 @@ if (isset($_GET['form_biodata'])) {
     $form = 'Applicant Bio-data Form';
     //Select Available Forms
     $tblName = 'application_tbl';
-    $conditions = array(
+    $conditions = [
         'return_type' => 'single',
-        'where' => array(
+        'where' => [
             'form_number' =>  $form_number,
-        )
-    );
+        ]
+    ];
     $form_view = $model->getRows($tblName, $conditions);
 
     $include = "../../include/form/biodata.php";

@@ -12,7 +12,7 @@ include '../../controller/start.inc.php';
     <title>Admission Portal </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/firsthonourschlogo.png">
-	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
 </head>
