@@ -103,7 +103,7 @@ include '../../include/php/navbar.php';
                                                     <p><strong>
                                                             <?php
                                                             if ($view['classid'] <= 11) {
-                                                                echo '&#8358;2000';
+                                                                echo '&#8358;3000';
                                                             } else {
                                                                 echo '&#8358;3000';
                                                             }
